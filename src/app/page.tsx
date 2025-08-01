@@ -1,103 +1,150 @@
-import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+import React from "react";
+import {Github, Linkedin, Mail, Phone, MapPin} from "lucide-react";
+
+const resumeData ={
+  name: "Anna Julia da Silva Madeira",
+  title: "Desenvolvedora Frontend Jr.",
+  Contact: {
+    email: 'anna.madeira@icloud.com',
+    phone: '(11) 98897-3221',
+    location: 'São Paulo, SP',
+    linkedin: 'anna-madeira',
+    github: 'Anna-Madeira',
+  },
+  Summary: "Profissional em transição de carreira para Desenvolvimento Front-end, com foco na criação de interfaces de usuário intuitivas e acessíveis. Minha experiência prévia em análise de sistemas e gestão de projetos me proporcionou uma base sólida em metodologias ágeis (Scrum, Kanban) e SQL, habilidades que agora aplico para criar soluções eficientes e colaborar com equipes multidisciplinares.",
+
+  experience: [
+    {
+
+    title: "Analista de Sistemas jr.",
+    company: "MC1 Tecnologia LTDA",
+    period: "Abril de 2022 – Março de 2023",
+    description: "Liderei a definição de escopo e elaborei especificações técnicas para projetos de automação de vendas, garantindo a entrega de soluções eficientes. Colaborei diretamente com equipes de desenvolvimento, servindo como ponte entre as necessidades do cliente e a execução técnica."
+  },
+
+  {
+
+    title: "Analista de Configuração",
+    company: "MC1 Tecnologia LTDA",
+    period: "Fevereiro de 2021 - Abril de 2022",
+    description: "Personalizei e implementei soluções tecnológicas para clientes do setor alimentício, com o objetivo de otimizar processos e aumentar a produtividade das equipes comerciais. Analisei as necessidades dos clientes para configurar sistemas de forma estratégica."
+  },
+
+    {
+
+    title: "Recepcionista Terceirizada",
+    company: "Limpidus",
+    period: "Fevereiro de 2019 – Fevereiro de 2021",
+    description: "Gerenciei o atendimento ao cliente e dei suporte a colaboradores, coordenando processos de viagens corporativas e emissão de passagens. Minha atuação focou em assegurar a eficiência operacional e a satisfação do cliente interno e externo."
+
+  },
+  ],
+
+  education: [
+    {
+
+      degree: "Tecnologia em Análise e Desenvolvimento de Sistemas",
+      institution: "Universidade Nove de Julho",
+      period: "Agosto de 2020 - Dezembro de 2022"
+    }
+    ],
+    skills: ["React.js", "Typescript", "Tailwind CSS", "JavaScript", "Node.js", "HTML", "CSS", "SQL", "Metodologias Ágeis"],
+};
+
+const Header = () => (
+  <div className="text-center mb-10">
+    <h1 className="text-4xl font-bold text-white"> {resumeData.name}</h1>
+    <h2 className="text-xl text-green-400 font-semibold">{resumeData.title} </h2>
+      <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mt-4 text-neutral-400">
+       <a href={`mailto:${resumeData.Contact.email}`} className="flex items-center gap-1 hover:text-green-400 transition-colors">
+        <Mail size={16} />
+        <span>{resumeData.Contact.email} </span> 
+       </a>
+       <a href={`https://wa.me/${resumeData.Contact.phone.replace(/[\s()-]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition-colors"> 
+           <Phone size={16} />
+        <span>{resumeData.Contact.phone}</span>
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a href={`https://github.com/${resumeData.Contact.github}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition-colors"> 
+          <Github size={16}/>
+          <span>Github</span>
+          </a>
+          <a href={`https://linkedin.com/in/${resumeData.Contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition-colors">
+          <Linkedin size={16}/>
+          <span>Linkedin</span>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    </div>
+);
+
+const Section = ({title, children}: {title: string, children: React.ReactNode}) => (
+<div className="mb-8">
+  <h3 className="text-2xl font-bold text-green-400 border-b-2 border-neutral-700 pb-2 mb-4"> {title} </h3>
+  {children}
+</div>
+);
+
+const Resume = () => {
+  return (
+    <div className="bg-neutral-800 p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl w-full mx-auto my-8">
+      <Header />
+
+    <Section title="Resumo">
+      <p className="text-neutral-300 leading-relaxed"> {resumeData.Summary}</p>
+    </Section>
+    
+    <Section title="Experiência Profissional">
+      {resumeData.experience.map((job, index) =>(
+        <div key={index} className="mb-4">
+          <h4 className="text-xl font-semibold text-white">{job.title}</h4>
+          <p className="text-neutral-400 text-sm italic">{job.company} | {job.period}</p>
+          <p className="text-neutral-300 mt-2">{job.description}</p>
+        </div>
+      ))}
+    </Section>
+
+    <Section title="Educação">
+      {resumeData.education.map((edu, index) => (
+        <div key={index} className="mb-4">
+          <h4 className="text-xl font-semibold text-white">{edu.degree}</h4>
+          <p className="text-neutral-400 text-sm italic">{edu.institution} | {edu.period} </p>
+        </div>
+      ))}
+    </Section>
+    <Section title="Habilidades">
+      
+        <div className="flex flex-wrap gap-2">
+          {resumeData.skills.map((skill, index) => (
+        <span key={index} className="bg-neutral-700 text-green-400 text-sm font-medium px-4 py-1 rounded-full">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </Section>
+    </div>
+    
+  );
+};
+
+
+
+const Layout = ({ children }: { children: React.ReactNode }) => (
+  <div className="bg-neutral-900 min-h-screen font-inter flex flex-col">
+    <main className="flex-grow flex items-center justify-center p-4">
+      {children}
+    </main>
+ 
+  </div>
+);
+
+
+export default function app(){
+  return(
+<div className="bg-neutral-900 min-h-screen flex items-center justify-center p-4 font-inter">
+  <Layout>
+   <Resume />
+  </Layout>
     </div>
   );
 }

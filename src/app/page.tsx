@@ -55,22 +55,22 @@ const resumeData ={
 
 const Header = () => (
   <div className="text-center mb-10">
-    <h1 className="text-4xl font-bold text-white"> {resumeData.name}</h1>
-    <h2 className="text-xl text-green-400 font-semibold">{resumeData.title} </h2>
-      <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mt-4 text-neutral-400">
-       <a href={`mailto:${resumeData.Contact.email}`} className="flex items-center gap-1 hover:text-green-400 transition-colors">
+    <h1 className="text-4xl font-bold text-pink-700"> {resumeData.name}</h1>
+    <h2 className="text-xl text-pink-500 font-semibold">{resumeData.title} </h2>
+      <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mt-4 text-black italic font-semibold">
+       <a href={`mailto:${resumeData.Contact.email}`} className="flex items-center gap-1 hover:text-pink-900 transition-colors">
         <Mail size={16} />
         <span>{resumeData.Contact.email} </span> 
        </a>
-       <a href={`https://wa.me/${resumeData.Contact.phone.replace(/[\s()-]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition-colors"> 
+       <a href={`https://wa.me/${resumeData.Contact.phone.replace(/[\s()-]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-pink-900  transition-colors"> 
            <Phone size={16} />
         <span>{resumeData.Contact.phone}</span>
           </a>
-          <a href={`https://github.com/${resumeData.Contact.github}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition-colors"> 
+          <a href={`https://github.com/${resumeData.Contact.github}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-pink-900  transition-colors"> 
           <Github size={16}/>
           <span>Github</span>
           </a>
-          <a href={`https://linkedin.com/in/${resumeData.Contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-400 transition-colors">
+          <a href={`https://linkedin.com/in/${resumeData.Contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-pink-900  transition-colors">
           <Linkedin size={16}/>
           <span>Linkedin</span>
           </a>
@@ -80,26 +80,26 @@ const Header = () => (
 
 const Section = ({title, children}: {title: string, children: React.ReactNode}) => (
 <div className="mb-8">
-  <h3 className="text-2xl font-bold text-green-400 border-b-2 border-neutral-700 pb-2 mb-4"> {title} </h3>
+  <h3 className="text-2xl font-extralight font-serif text-gray-900 border-b-2 pb-2 mb-4"> {title} </h3>
   {children}
 </div>
 );
 
 const Resume = () => {
   return (
-    <div className="bg-neutral-800 p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl w-full mx-auto my-8">
+    <div className="bg-pink-100 p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl w-full mx-auto my-8">
       <Header />
 
     <Section title="Resumo">
-      <p className="text-neutral-300 leading-relaxed"> {resumeData.Summary}</p>
+      <p className="text-black font-sans leading-relaxed "> {resumeData.Summary}</p>
     </Section>
     
     <Section title="Experiência Profissional">
       {resumeData.experience.map((job, index) =>(
         <div key={index} className="mb-4">
-          <h4 className="text-xl font-semibold text-white">{job.title}</h4>
-          <p className="text-neutral-400 text-sm italic">{job.company} | {job.period}</p>
-          <p className="text-neutral-300 mt-2">{job.description}</p>
+          <h4 className="text-xl font-mono text-gray-500 ">{job.title}</h4>
+          <p className="text-neutral-700 text-sm ">{job.company} | {job.period}</p>
+          <p className="text-neutral-800 mt-2 font-sans mb-6">{job.description}</p>
         </div>
       ))}
     </Section>
@@ -107,8 +107,8 @@ const Resume = () => {
     <Section title="Educação">
       {resumeData.education.map((edu, index) => (
         <div key={index} className="mb-4">
-          <h4 className="text-xl font-semibold text-white">{edu.degree}</h4>
-          <p className="text-neutral-400 text-sm italic">{edu.institution} | {edu.period} </p>
+          <h4 className="text-xl font-mono text-gray-500">{edu.degree}</h4>
+          <p className="text-neutral-800 text-sm ">{edu.institution} | {edu.period} </p>
         </div>
       ))}
     </Section>
@@ -116,7 +116,7 @@ const Resume = () => {
       
         <div className="flex flex-wrap gap-2">
           {resumeData.skills.map((skill, index) => (
-        <span key={index} className="bg-neutral-700 text-green-400 text-sm font-medium px-4 py-1 rounded-full">
+        <span key={index} className="bg-pink-900 text-white italic text-sm font-mono px-4 py-1 rounded-full">
               {skill}
             </span>
           ))}
@@ -129,22 +129,14 @@ const Resume = () => {
 
 
 
-const Layout = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-neutral-900 min-h-screen font-inter flex flex-col">
-    <main className="flex-grow flex items-center justify-center p-4">
-      {children}
-    </main>
- 
-  </div>
-);
+
 
 
 export default function app(){
   return(
-<div className="bg-neutral-900 min-h-screen flex items-center justify-center p-4 font-inter">
-  <Layout>
+<div className=" min-h-screen flex items-center justify-center p-4 font-inter ">
    <Resume />
-  </Layout>
+
     </div>
   );
 }
